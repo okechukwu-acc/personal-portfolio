@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to My Personal Portfolio</h1>
+<p>Here you will find information about my projects, skills, and professional experiences.</p>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        {% for project in projects %}
+        <li>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <img src="{{ url_for('static', filename='images/' + project.image_file) }}" alt="{{ project.title }}">
+            <a href="{{ project.link }}">View Project</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="blog">
+    <h2>Blog</h2>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.body[:100] }}...</p>
+            <a href="{{ url_for('blog') }}">Read More</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
