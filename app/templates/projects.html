@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My Projects</h1>
+<ul>
+    {% for project in projects %}
+    <li>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <img src="{{ url_for('static', filename='images/' + project.image_file) }}" alt="{{ project.title }}">
+        <a href="{{ project.link }}">View Project</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
